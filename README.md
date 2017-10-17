@@ -1,119 +1,59 @@
 # Amphibian
-An Amphibian Class, code from Open University
+//Frog
+import ou.*;
 /**
- * The abstract class Amphibian forms the basis of all amphibians.
+ * The class Frog defines an amphibian with the characteristics of a frog.
  *
- * @author Peter Maddin
- * @version 1.0
+ * @author M250 Module Team
+ * @version 2.0
  */
-public abstract class Amphibian extends OUAnimatedObject
+
+public class Frog extends Amphibian
 {
-
-   /* instance variables */
-   private OUColour colour;
-   private int position;
-
    /**
-    * Constructor for objects of the abstract class Amphibian.
-    */
-   public Amphibian(OUColour aColour, int aPosition)
+    * Constructor for objects of class Frog which initialises colour to green
+    * and position to 1.
+    */  
+   public Frog()
    {
-      super();
-      this.colour = aColour;
-      this.position = aPosition;
+      super(OUColour.GREEN, 1);
    }
 
    /* instance methods */    
 
-   /** 
-    * Moves the receiver to the left.
-    */ 
-   public abstract void left(); 
-
-   /** 
-    * Moves the receiver to the right.
-    */
-   public abstract void right();
-
    /**
-    * Resets the receiver to its "home" position.
-    */
-   public abstract void home();
-
-   /**
-    * Returns the position of the receiver.
-    */
-   public int getPosition()
-   {
-      return this.position;
-   }
-
-   /**
-    * Sets the position of the receiver to the value of the argument aPosition.
-    */
-   public void setPosition (int aPosition)
-   {
-      this.position = aPosition;
-      this.update("position");
-   }
-
-   /**
-    * Sets the colour of the receiver to the argument's colour.
-    */
-   public void sameColourAs(Amphibian anAmphibian)
-   {
-      this.setColour(anAmphibian.getColour());
-   }
-
-   /**
-    * Returns the colour of the receiver.
-    */
-   public OUColour getColour()
-   {
-      return this.colour;
-   }
-
-   /**
-    * Sets the colour of the receiver to the value of the argument aColour.
-    */
-   public void setColour(OUColour aColour)
-   {
-      this.colour = aColour;
-      this.update("colour");
-   }
-
-   /**
-    * Sets the colour of the receiver to brown.
-    */
-   public void brown()
-   {
-      this.setColour(OUColour.BROWN);
-   }
-
-   /**
-    * Sets the colour of the receiver to green.
-    */
-   public void green()
-   {
-      this.setColour(OUColour.GREEN);
-   }
-
-   /**
-    * Causes user interface to emit a sound.
-    */
-   public void croak()
-   {
-      this.performAction("croak");
-   }
-
-   /**
-    * Returns a string representation of the receiver.
+    * Resets the receiver to its "home" position of 1.
     */
    @Override
-   public String toString()
+   public void home()
    {
-      return "An instance of class " + this.getClass().getName() 
-      + ": position " + this.getPosition() 
-      + ", colour " + this.getColour();
+      this.setPosition(1);
+   }
+
+   /**
+    * Decrements the position of the receiver by 1.
+    */
+   @Override
+   public void left()
+   {
+      this.setPosition(this.getPosition() - 1);
+   }
+
+   /**
+    * Increments the position of the receiver by 1.
+    */
+   @Override
+   public void right()
+   {
+      this.setPosition(this.getPosition() + 1);
+   }
+
+   /**
+    * Causes a change in an appropriate observing user interface.
+    * Icon representing the receiver performs a jump animation
+    */
+   public void jump()
+   {
+      this.performAction("jump");
    }
 }

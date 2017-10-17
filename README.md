@@ -4,7 +4,7 @@ import ou.*;
 /**
  * The class Frog defines an amphibian with the characteristics of a frog.
  *
- * @author M250 Module Team
+ * @author Peter Maddin
  * @version 2.0
  */
 

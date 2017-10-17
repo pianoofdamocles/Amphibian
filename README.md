@@ -1,9 +1,10 @@
 # Amphibian
 An Amphibian Class, code from Open University
+import ou.*;
 /**
  * The abstract class Amphibian forms the basis of all amphibians.
  *
- * @author Peter Maddin
+ * @author M250 Module Team
  * @version 1.0
  */
 public abstract class Amphibian extends OUAnimatedObject

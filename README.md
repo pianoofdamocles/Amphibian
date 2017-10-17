@@ -1,5 +1,5 @@
 # Amphibian
-An Amphibian Class, code from Open University
+//An Amphibian Class, code from Open University
 import ou.*;
 /**
  * The abstract class Amphibian forms the basis of all amphibians.

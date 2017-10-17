@@ -1,59 +1,105 @@
 # Amphibian
-//Frog
-import ou.*;
 /**
- * The class Frog defines an amphibian with the characteristics of a frog.
- *
+ * HoverFrog
+ * The class HoverFrog is a subclass of Frog with the addition of the 
+ * instance variable height and the accessors setHeight() and getHeight().
+ * 
  * @author Peter Maddin
- * @version 2.0
+ * @version 1.0
  */
-
-public class Frog extends Amphibian
+public class HoverFrog extends Frog
 {
+   /* Instance variable */
+
+   /** The current hovering height of the HoverFrog (in the range 0-6). */
+   private int height;
+
    /**
-    * Constructor for objects of class Frog which initialises colour to green
-    * and position to 1.
-    */  
-   public Frog()
+    * Constructor for objects of class HoverFrog which initialises height to 0.
+    */
+   public HoverFrog()
    {
-      super(OUColour.GREEN, 1);
+      super();
+      this.height = 0;
    }
 
-   /* instance methods */    
+   /* Instance methods */
 
    /**
-    * Resets the receiver to its "home" position of 1.
+    * Returns the height of the receiver.
+    */
+   public int getHeight()
+   {
+      return this.height;
+   }
+
+   /**
+    * Sets the height of the receiver to the value of the argument aHeight.
+    * aHeight must lie in the range 0-6 otherwise height remains unchanged.
+    */
+   public void setHeight(int aHeight)
+   {
+      if ((aHeight >= 0) && (aHeight <= 6))
+      {
+         this.height = aHeight;
+         this.update("height");
+      }
+   }
+
+   /**
+    * Increases the height of the receiver by the value of the argument stepChange.
+    * The new height of the receiver must lie in the range 0-6 otherwise height 
+    * remains unchanged.
+    */
+   public void upBy(int stepChange)
+   {
+      this.setHeight(this.getHeight() + stepChange);
+   }
+
+   /**
+    * Decreases the height of the receiver by the value of the argument stepChange.
+    * The new height of the receiver must lie in the range 0-6 otherwise height 
+    * remains unchanged.
+    */
+   public void downBy(int stepChange)
+   {
+      this.setHeight(this.getHeight() - stepChange);
+   }
+
+   /**
+    * If the height of the receiver is greater than 0 decrements the height of the receiver 
+    * by 1, otherwise height remains unchanged.
+    */
+   public void down()
+   {
+      this.downBy(1);
+   }
+
+   /**
+    * If the height of the receiver is less than 6 increments the height of the receiver 
+    * by 1, otherwise height remains unchanged.
+    */
+   public void up()
+   {
+      this.upBy(1);
+   }
+
+   /**
+    * Resets the receiver to its home position and to a height of 0.
     */
    @Override
    public void home()
    {
-      this.setPosition(1);
+      super.home();
+      this.setHeight(0);
    }
 
    /**
-    * Decrements the position of the receiver by 1.
+    * Returns a string representation of the receiver.
     */
    @Override
-   public void left()
+   public String toString()
    {
-      this.setPosition(this.getPosition() - 1);
-   }
-
-   /**
-    * Increments the position of the receiver by 1.
-    */
-   @Override
-   public void right()
-   {
-      this.setPosition(this.getPosition() + 1);
-   }
-
-   /**
-    * Causes a change in an appropriate observing user interface.
-    * Icon representing the receiver performs a jump animation
-    */
-   public void jump()
-   {
-      this.performAction("jump");
+      return super.toString() + ", height " + this.getHeight();
    }
 }
